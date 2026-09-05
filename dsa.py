@@ -277,205 +277,314 @@
 
 
 
+# class Node:
+#     def __init__(self,value):
+#         self.data=value
+#         self.next=None
+
+# class LinkedList:
+#     def __init__(self):
+#         self.n=0
+#         self.head=None
+
+#     def __len__(self):
+#         return self.n
+
+#     # insertions
+#     def insert_head(self,value):
+#         new_node=Node(value)
+#         new_node.next=self.head    
+#         self.head=new_node
+#         self.n=self.n+1
+
+
+#     def append(self,value):
+
+#         new_node=Node(value)
+#         if self.head==None:
+#             self.head=new_node
+#             self.n=self.n
+#             return
+
+#         curr =self.head
+#         while curr.next!=None: #if you want to stop before none curr.next if you want to stop 2nd last node then curr.next.next and so on
+#             curr=curr.next
+#         curr.next=new_node
+#         self.n=self.n+1
+
+    
+#     def insert_middle(self,after_value,value):
+#         new_node=Node(value)
+#         if self.head==None:
+#           self.head=new_node
+#           self.n=self.n+1
+#           return
+#         curr=self.head
+
+#         while curr!=None:
+#              if curr.data==after_value:
+#                 # print("value not found")
+#                 break
+#              curr=curr.next
+#         if curr!=None:
+#             new_node.next=curr.next
+#             curr.next=new_node
+#             self.n=self.n+1
+#         else:
+#             print("Value not found")
+
+    
+        
+
+#     def traverse(self):
+
+#         if self.n==0:
+#             return "IndexError Linked List empty"
+#         curr=self.head
+#         result=""
+#         while curr !=None:  
+#            result =result+str(curr.data)+"->"
+#            curr=curr.next # the while loop needs  an increment always
+#         return result[:-2]
+
+#     # deletions
+#     def clear(self):
+#          self.head=None
+#          self.n=0
+
+#     def delete_head(self):
+#         if self.head==None:
+#             return "IndexError linked list is empty"
+
+#         self.head=self.head.next
+#         self.n=self.n-1
+
+#     def pop(self):
+#         if self.head==None:
+#                     return "IndexError linked list is empty"
+        
+#         curr=self.head
+#         while curr.next.next!=None:
+#             curr=curr.next
+#         curr.next=None
+#         self.n=self.n-1
+#     def delete_by_value(self,value):
+#         if self.head==None:
+#             return "IndexError Linked List is empty"
+
+        
+#         if self.head.data==value:
+#             self.head=self.head.next
+#             return 
+
+#         curr=self.head
+        
+#         while curr.next.data!= value:     
+                  
+#             curr=curr.next
+
+#         curr.next=curr.next.next
+#         self.n=self.n-1   
+
+
+#     # def delete_by_index(self,index):
+
+
+#     def __delitem__(self, key):
+#         # print("exe 1")
+#         curr=self.head
+#         if self.head==None:
+#             return "LinkedList empty"
+#         if key==0:
+#            self.head=self.head.next
+#            return
+#         index=0
+#         while curr.next.next is not None:
+            
+#             if key-1==index:
+#                curr.next=curr.next.next
+#                print("exe 2")
+#                return
+            
+#             curr=curr.next
+#             index=index+1
+        
+#         print("exe 3")
+#         curr.next=None
+#         return "Limit Exceeded index not found"
+        
+         
+#      #Searching 
+
+#     def search_by_value(self,value):
+#         curr=self.head
+#         index=0
+#         while curr is not None:
+#             if curr.data ==value:
+#                  return index
+        
+#             curr=curr.next
+#             index=index+1
+        
+#     def search_by_index(self,index):
+#         curr=self.head
+#         iter=0
+
+#         while curr is not None:
+#             if iter==index:
+#                 return curr.data
+        
+#             curr=curr.next
+#             iter+=1
+
+        
+        
+
+        
+
+
+
+
+
+
+        
+    
+
+
+
+# a=LinkedList()
+
+# a.insert_head(1)
+# a.insert_head(2)
+# a.insert_head(3)
+# a.insert_head(4)
+# a.insert_head(5)
+# a.append(6)
+# a.insert_middle(4,"hello")
+# a.insert_middle("hello","world")
+
+# # a.clear()
+# # a.delete_head()
+# # a.pop()
+# # a.delete_by_value(5)
+
+
+# # values 
+# # print(a.search_by_value("hello"))
+# # print(a.search_by_index(0))
+
+# # print(len(a))
+# print(a.traverse())
+# # print(a)
+
+# del a[0]
+# print(a.traverse())
+
+
+
+#  linked list test  question 
+# Q1- write a python program to find the max value in a linked list adn replace it with the given value
+# assume that the linked list is populated with whole numbers and there is only one maximum value in it 
+
+# make a linked list 
+
 class Node:
     def __init__(self,value):
         self.data=value
         self.next=None
 
-class LinkedList:
+
+class LL:
     def __init__(self):
-        self.n=0
         self.head=None
+        self.n=0
+
+
+    def insert_head(self,value):
+        new_node=Node(value)
+        if self.head==None:
+            self.head=new_node
+            self.n=self.n+1
+            return
+        new_node.next=self.head
+        self.head=new_node
+        self.n=self.n+1
+        
+
 
     def __len__(self):
         return self.n
 
-    # insertions
-    def insert_head(self,value):
-        new_node=Node(value)
-        new_node.next=self.head    
-        self.head=new_node
-        self.n=self.n+1
-
-
-    def append(self,value):
-
-        new_node=Node(value)
-        if self.head==None:
-            self.head=new_node
-            self.n=self.n
-            return
-
-        curr =self.head
-        while curr.next!=None: #if you want to stop before none curr.next if you want to stop 2nd last node then curr.next.next and so on
-            curr=curr.next
-        curr.next=new_node
-        self.n=self.n+1
-
-    
-    def insert_middle(self,after_value,value):
-        new_node=Node(value)
-        if self.head==None:
-          self.head=new_node
-          self.n=self.n+1
-          return
-        curr=self.head
-
-        while curr!=None:
-             if curr.data==after_value:
-                # print("value not found")
-                break
-             curr=curr.next
-        if curr!=None:
-            new_node.next=curr.next
-            curr.next=new_node
-            self.n=self.n+1
-        else:
-            print("Value not found")
-
-    
-        
-
     def traverse(self):
-
         if self.n==0:
-            return "IndexError Linked List empty"
+            return "LL empty"
         curr=self.head
         result=""
-        while curr !=None:  
-           result =result+str(curr.data)+"->"
-           curr=curr.next # the while loop needs  an increment always
+        
+        while curr!=None:
+            
+            result=result+str(curr.data)+"->"
+            curr = curr.next
+      
         return result[:-2]
-
-    # deletions
-    def clear(self):
-         self.head=None
-         self.n=0
-
-    def delete_head(self):
+    def Question1(self,value):
         if self.head==None:
-            return "IndexError linked list is empty"
-
-        self.head=self.head.next
-        self.n=self.n-1
-
-    def pop(self):
-        if self.head==None:
-                    return "IndexError linked list is empty"
-        
+            return "LL empty"
         curr=self.head
-        while curr.next.next!=None:
+        new_node=Node(value)
+        max=0
+        for  i in range(self.n-1):
+            if curr.next.data>=max:
+                max=curr.next.data
+                # print(curr.next)
+                next_node=curr.next.next
+                current_node_address=curr.next
+                #inserting the node
+                
             curr=curr.next
-        curr.next=None
-        self.n=self.n-1
-    def delete_by_value(self,value):
-        if self.head==None:
-            return "IndexError Linked List is empty"
-
         
-        if self.head.data==value:
-            self.head=self.head.next
-            return 
-
-        curr=self.head
-        
-        while curr.next.data!= value:     
-                  
-            curr=curr.next
-
-        curr.next=curr.next.next
-        self.n=self.n-1   
-
-
-    # def delete_by_index(self,index):
-
-
-    def __delitem__(self, key):
+        new_curr=self.head
         # print("exe 1")
-        curr=self.head
-        if self.head==None:
-            return "LinkedList empty"
-        if key==0:
-           self.head=self.head.next
-           return
-        index=0
-        while curr.next.next is not None:
+        # print(max)
+        # print(next_node)
+        # print(current_node_address)
+        while new_curr!=None:
+
+            if new_curr.next==current_node_address:
+                print(" if exe 1")
+                new_curr.next=new_node
+                print(" if exe 2")
+                new_node.next=next_node
+                print(" if exe 3")
+                return
+
+            new_curr=new_curr.next
+
+        # return max
             
-            if key-1==index:
-               curr.next=curr.next.next
-               print("exe 2")
-               return
+
+
+
+L=LL()
+
+L.insert_head(5)
+L.insert_head(2)
+L.insert_head(6)
+L.insert_head(4)
+L.insert_head(8)
+L.insert_head(7)
+L.insert_head(3)
+L.insert_head(1)
+L.insert_head(0)
+
+# L.traverse()
+print(L.traverse())
+
+L.Question1(121)
             
-            curr=curr.next
-            index=index+1
-        
-        print("exe 3")
-        curr.next=None
-        return "Limit Exceeded index not found"
-        
-         
-     #Searching 
-
-    def search_by_value(self,value):
-        curr=self.head
-        index=0
-        while curr is not None:
-            if curr.data ==value:
-                 return index
-        
-            curr=curr.next
-            index=index+1
-        
-    def search_by_index(self,index):
-        curr=self.head
-        iter=0
-
-        while curr is not None:
-            if iter==index:
-                return curr.data
-        
-            curr=curr.next
-            iter+=1
-
-        
-        
-
-        
+print(L.traverse())
 
 
 
 
 
-
-        
-    
-
-
-
-a=LinkedList()
-
-a.insert_head(1)
-a.insert_head(2)
-a.insert_head(3)
-a.insert_head(4)
-a.insert_head(5)
-a.append(6)
-a.insert_middle(4,"hello")
-a.insert_middle("hello","world")
-
-# a.clear()
-# a.delete_head()
-# a.pop()
-# a.delete_by_value(5)
-
-
-# values 
-# print(a.search_by_value("hello"))
-# print(a.search_by_index(0))
-
-# print(len(a))
-print(a.traverse())
-# print(a)
-
-del a[0]
-print(a.traverse())
