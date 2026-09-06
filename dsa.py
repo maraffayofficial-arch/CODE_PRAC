@@ -551,16 +551,26 @@ class LL:
         while new_curr!=None:
 
             if new_curr.next==current_node_address:
-                print(" if exe 1")
+                # print(" if exe 1")
                 new_curr.next=new_node
-                print(" if exe 2")
+                # print(" if exe 2")
                 new_node.next=next_node
-                print(" if exe 3")
+                # print(" if exe 3")
                 return
 
             new_curr=new_curr.next
 
-        # return max
+    # Q2 make a function to return the sum of all the odd index values of LL
+    def sum_odd(self):
+        curr=self.head
+        sum=0
+        for i in range(self.n):
+                if i % 2!=0:
+                    sum=sum+curr.data
+                curr=curr.next
+        return sum
+             
+
             
 
 
@@ -571,7 +581,6 @@ L.insert_head(5)
 L.insert_head(2)
 L.insert_head(6)
 L.insert_head(4)
-L.insert_head(8)
 L.insert_head(7)
 L.insert_head(3)
 L.insert_head(1)
@@ -580,8 +589,8 @@ L.insert_head(0)
 # L.traverse()
 print(L.traverse())
 
-L.Question1(121)
-            
+# L.Question1(18)
+print(L.sum_odd())
 print(L.traverse())
 
 
