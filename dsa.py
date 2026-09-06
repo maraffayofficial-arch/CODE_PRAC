@@ -570,7 +570,22 @@ class LL:
                 curr=curr.next
         return sum
              
+    def reverse(self):
+        curr=self.head
+        prev_node=None
+        while curr!=None:
+            next_node=curr.next
+            curr.next=prev_node
 
+            prev_node=curr
+            curr=next_node
+        self.head=prev_node
+
+
+
+
+
+            
             
 
 
@@ -590,7 +605,9 @@ L.insert_head(0)
 print(L.traverse())
 
 # L.Question1(18)
-print(L.sum_odd())
+# print(L.sum_odd())
+L.reverse()
+
 print(L.traverse())
 
 
