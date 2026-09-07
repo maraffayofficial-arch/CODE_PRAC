@@ -523,10 +523,12 @@ class LL:
         
         while curr!=None:
             
-            result=result+str(curr.data)+"->"
+            result=result+str(curr.data)
+            # result=result+str(curr.data)+"->"
             curr = curr.next
       
-        return result[:-2]
+        # return result[:-2]
+        return result
     def Question1(self,value):
         if self.head==None:
             return "LL empty"
@@ -580,10 +582,27 @@ class LL:
             prev_node=curr
             curr=next_node
         self.head=prev_node
+    def change_str(self):
+        curr=self.head
+        while curr!=None:
+            if curr.data == "*" or curr.data== "/":
+                    curr.data=" "
+                    if curr.next.data=="*" or curr.next.data=="/":
+                        curr.next=curr.next.next
+                        curr.next.data=curr.next.data.upper()
+            
+            curr=curr.next
 
 
 
+# Q A function that will take a LL and change the string of ll into a meaning full sentence by the following rules
+#  1- whenever you see a * or / replace it by a single space
+# 2- whenever you see 2 ** or 2 // or 1 * and 1 / side by side replace them by a space and Capitalize the next Letter
+    
+# i.e
 
+# Today*is/a*very**good//day
+# Today is a very Good Day
 
             
             
@@ -592,22 +611,41 @@ class LL:
 
 L=LL()
 
-L.insert_head(5)
-L.insert_head(2)
-L.insert_head(6)
-L.insert_head(4)
-L.insert_head(7)
-L.insert_head(3)
-L.insert_head(1)
-L.insert_head(0)
+# L.insert_head(5)
+# L.insert_head(2)
+# L.insert_head(6)
+# L.insert_head(4)
+# L.insert_head(7)
+# L.insert_head(3)
+# L.insert_head(1)
+# L.insert_head(0)
+# the string 
+L.insert_head("e")
+L.insert_head("u")
+L.insert_head("l")
+L.insert_head("b")
+L.insert_head("/")
+L.insert_head("*")
+L.insert_head("s")
+L.insert_head("i")
+L.insert_head("*")
+L.insert_head("y")
+L.insert_head("k")
+L.insert_head("s")
+L.insert_head("/")
+L.insert_head("*")
+L.insert_head("e")
+L.insert_head("h")
+L.insert_head("T")
 
-# L.traverse()
+
 print(L.traverse())
+# print(L.traverse())
 
 # L.Question1(18)
-# print(L.sum_odd())
-L.reverse()
-
+# print(L.sum_odd())s
+# L.reverse()
+L.change_str()
 print(L.traverse())
 
 
