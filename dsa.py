@@ -679,7 +679,7 @@ class Stack:
 
     def traverse(self):
          if (self.is_empty()):
-                       return "Stack Empty"
+            return "Stack Empty"
          curr=self.top
          while curr!=None:
               print(curr.data)
@@ -692,8 +692,10 @@ class Stack:
     def pop(self):
          if (self.is_empty()):
               return "Stack Empty"
+         popped=self.top
          self.top=self.top.next
-         return
+
+         return popped.data
 
     def size(self):
         curr=self.top
@@ -703,24 +705,84 @@ class Stack:
              curr=curr.next
         return counter
 
+
+# Q reverse a string useing stack 
+    def reverse(self):
+        curr=self.top
+        s=""
+        while curr!=None:
+              temp=self.top
+              s=s+str(temp.data)+""
             
+              self.top=self.top.next
+              curr=curr.next
+
+        return   print(s)
 
 s=Stack()
 
-s.push(1)
-s.push(2)
-s.push(4)
-s.push(5)
-s.push(6)
+s.push("H")
+s.push("e")
+s.push("l")
+s.push("l")
+s.push("o")
+
+
+
+
+
+def reverse_str(text):
+    s=Stack()
+    for i in text:
+        s.push(i)
+    return s.reverse()
+     
+
+
+
+# Q maing a fuction that will perform undo and redo functionality on the basis of the given pattern 
+
+def undo_redo(text,pattern):
+    u=Stack()
+    r=Stack()
+    for i in text:
+         u.push(i)
+
+    for i in pattern:
+        if i=='u':
+              temp=u.pop()
+              pushed=r.push(temp)
+            
+        if i=="r":
+           temp2=r.pop()
+           pushed2=u.push(temp2)
+           
+    return u.traverse()
+             
+
+    
+
+# str="Hello"
+# for i in "Hello":
+#      s.push(i)
+     
+
 
 # print(s.peek()) prints the top element
 s.traverse()
 
 # s.pop()
-print("POP EXECUTED")
 
-print(s.size())
+# print(s.size())
+print("REVERSE EXECUTED")
+# print(s.reverse())
+# reverse_str("raffay")
+
 # s.traverse()
 
 
+
+undo_redo("hello","uur")
+
+# print(edited_str)
 
