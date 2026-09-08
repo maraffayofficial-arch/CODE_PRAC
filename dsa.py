@@ -845,44 +845,6 @@ class Stack:
 
 #  CELEB PROBLEM AGAN
 
-L = [
-    [1, 1, 1, 1],  # Person 0 knows Person 1
-    [0, 0, 0, 0],  # Person 1 knows NO ONE
-    [1, 1, 0, 0],  # Person 2 knows Person 1
-    [0, 1, 1, 1],  # Person 3 knows Person 1
-]
-def find_celeb(L):
-    s=Stack()
-    for i in range(len(L)): # push 0,1,2,3 into the stack 
-         s.push(i)
-    while s.size()>=2:
-         i=s.pop()
-         j=s.pop()
-         if L[i][j]==0: #meaining in first iteration i will be 3 and j will be 2 so its checking L[3][2]==0 or not 
-              # here it is no that means j is not the celeb
-              s.push(i)  # so we throw j away and push i back in
-              
-         else:
-            
-              s.push(j)
-    celeb=s.pop()
-    print(s.traverse())
-    for i in range(len(L)):
-        if i!=celeb:
-            if L[i][celeb]==0 or L[celeb][i]==1:
-                return print("Celeb not found")
-            else:
-                return print("checked celeb",celeb)
-
-
-
-
-
-
-find_celeb(L)
-
-
-
 # L = [
 #     [1, 1, 1, 1],  # Person 0 knows Person 1
 #     [0, 0, 0, 0],  # Person 1 knows NO ONE
@@ -890,35 +852,60 @@ find_celeb(L)
 #     [0, 1, 1, 1],  # Person 3 knows Person 1
 # ]
 # def find_celeb(L):
-#     s = Stack()
-    
-#     # Push 0, 1, 2, 3 onto stack
-#     for i in range(len(L)): 
-#         s.push(i)
-        
-#     # Elimination phase
-#     while s.size() >= 2:
-#         i = s.pop()
-#         j = s.pop()
-        
-#         if L[i][j] == 0:
-#             # i does NOT know j -> j cannot be celeb -> keep i
-#             s.push(i)
-#         else:
-#             # i DOES know j -> i cannot be celeb -> keep j
-#             s.push(j)
+#     s=Stack()
+#     for i in range(len(L)): # push 0,1,2,3 into the stack 
+#          s.push(i)
+#     while s.size()>=2:
+#          i=s.pop()
+#          j=s.pop()
+#          if L[i][j]==0: #meaining in first iteration i will be 3 and j will be 2 so its checking L[3][2]==0 or not 
+#               # here it is no that means j is not the celeb
+#               s.push(i)  # so we throw j away and push i back in
+              
+#          else:
             
-#     celeb = s.pop()
-
-#     # Verification phase
+#               s.push(j)
+#     celeb=s.pop()
+#     print(s.traverse())
 #     for i in range(len(L)):
-#         if i != celeb:
-#             if L[i][celeb] == 0 or L[celeb][i] == 1:
-#                 print("Celeb not found")
-#                 return
-                
-#     # Print only after all people are verified!
-#     print("The celebrity is Person", celeb)
+#         if i!=celeb:
+#             if L[i][celeb]==0 or L[celeb][i]==1:
+#                 return print("Celeb not found")
+#             else:
+#                 return print("checked celeb",celeb)
+
+
+
+
+
 
 # find_celeb(L)
-# # Output: The celebrity is Person 1
+
+
+
+## Q USIG STACKS WRITE A FUNCTION THAT WILL TELL WHETHER THE PARANTHESIS ARE PLACED COMPLETELY AND CORRECTLY OR NOT 
+
+# I.E  {(A+B)+(C+D)}
+
+string="{(A+B)}+(C+D"
+
+
+def paranthesis_detector(string):
+    s=Stack()
+    for i in string:
+        if i=="{" or i=="(" or i=="[" :  
+           s.push(i)
+        elif i=="}" or i==")" or i=="]":
+            if i==")" and s.peek()=="(" or i=="]" and s.peek()=="[" or i=="}" and s.peek()=="{" : 
+                s.pop()
+            else:
+                return False
+
+    if s.size()==0:
+        return True
+    else: 
+        return False
+
+    # print(s)
+
+print(paranthesis_detector(string))
