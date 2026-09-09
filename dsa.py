@@ -1002,7 +1002,7 @@ class Queue:
             self.front=new_node
             self.n+=1
             self.rear=new_node
-        # return self.front.data #checking 
+      
         self.rear.next=new_node
         self.rear=new_node
         self.n+=1
@@ -1015,7 +1015,12 @@ class Queue:
             result=result+str(curr.data)
             curr=curr.next
         return result
-            
+
+    def is_empty(self):
+        if self.n<0:
+            return True
+        else: 
+           return False
     def dequeue(self):
         if self.n==-1:
             return "Queue Empty"
@@ -1043,6 +1048,7 @@ q.dequeue()
 q.dequeue()
 print(q.traverse())
 
+print(q.is_empty())
 # print(q)
         
         
