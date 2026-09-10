@@ -1070,180 +1070,196 @@
 
 
 
-class Stack1:
-    def __init__(self,size):
-        self.size=size
-        self.top=-1
-        self.stack=[None]*self.size
+# class Stack1:
+#     def __init__(self,size):
+#         self.size=size
+#         self.top=-1
+#         self.stack=[None]*self.size
 
-    def push(self,value):
-        if self.top==self.size-1:
-            return "Stack Overflow"
-        self.top=self.top+1
-        self.stack[self.top]=value
-    def len(self):
-        return self.top+1
+#     def push(self,value):
+#         if self.top==self.size-1:
+#             return "Stack Overflow"
+#         self.top=self.top+1
+#         self.stack[self.top]=value
+#     def len(self):
+#         return self.top+1
 
-    def pop(self):
-        if self.top==-1:
-            return "Empty stack 1"
-        poped_item=self.stack[self.top]
-        self.stack[self.top]=None
-        self.top=self.top-1
+#     def pop(self):
+#         if self.top==-1:
+#             return "Empty stack 1"
+#         poped_item=self.stack[self.top]
+#         self.stack[self.top]=None
+#         self.top=self.top-1
         
-        return poped_item
-        
-
-    def traverse(self):
-        curr=self.top
-        for i in range(curr,-1,-1): # as stack traverse from behind
-            print(self.stack[i])
+#         return poped_item
         
 
-    def is_empty(self):
-        if self.top==-1:
-            return True
-        return False
+#     def traverse(self):
+#         curr=self.top
+#         for i in range(curr,-1,-1): # as stack traverse from behind
+#             print(self.stack[i])
+        
 
-    def is_full(self):
-            if self.top==self.size-1:
-                return True
-            return False
+#     def is_empty(self):
+#         if self.top==-1:
+#             return True
+#         return False
 
-
-
-# s1=Stack1(3)
-
-# s1.push(1)
-# s1.push(2)
-# s1.push(3)
-# print(s1.len())
-# s1.traverse()
-# print(s1.pop())
-# s1.traverse()
+#     def is_full(self):
+#             if self.top==self.size-1:
+#                 return True
+#             return False
 
 
-class Stack2:
-    def __init__(self,size):
-        self.size=size
-        self.top=-1
-        self.stack=[None]*self.size
 
-    def push(self,value):
-        if self.top==self.size-1:
-            return "Stack Overflow"
-        self.top=self.top+1
-        self.stack[self.top]=value
+# # s1=Stack1(3)
 
-    def traverse(self):
-        curr=self.top
+# # s1.push(1)
+# # s1.push(2)
+# # s1.push(3)
+# # print(s1.len())
+# # s1.traverse()
+# # print(s1.pop())
+# # s1.traverse()
 
-        for i in range(curr,-1,-1): # as a stack should traverse from behind
-            print(self.stack[i])
+
+# class Stack2:
+#     def __init__(self,size):
+#         self.size=size
+#         self.top=-1
+#         self.stack=[None]*self.size
+
+#     def push(self,value):
+#         if self.top==self.size-1:
+#             return "Stack Overflow"
+#         self.top=self.top+1
+#         self.stack[self.top]=value
+
+#     def traverse(self):
+#         curr=self.top
+
+#         for i in range(curr,-1,-1): # as a stack should traverse from behind
+#             print(self.stack[i])
            
 
-    def pop(self):
-        if self.top==-1:
-            return "Stack is empty"
-        popped_item=self.stack[self.top]
-        self.top=self.top-1
-        return popped_item
+#     def pop(self):
+#         if self.top==-1:
+#             return "Stack is empty"
+#         popped_item=self.stack[self.top]
+#         self.top=self.top-1
+#         return popped_item
     
-    def len(self):
-            return self.top+1
+#     def len(self):
+#             return self.top+1
     
-    def is_empty(self):
-        if self.top==-1:
-            return True
-        return False
+#     def is_empty(self):
+#         if self.top==-1:
+#             return True
+#         return False
 
-    def is_full(self):
-        if self.top==self.size-1:
-            return True
-        return False
+#     def is_full(self):
+#         if self.top==self.size-1:
+#             return True
+#         return False
     
-# s2=Stack2(5)
+# # s2=Stack2(5)
 
-# s2.insert(1)
-# s2.insert(2)
-# s2.insert(3)
-# s2.insert(4)
-# s2.insert(5)
-
-
-# s2.traverse()
-
-# s2.pop()
-
-# s2.traverse()
-
-# NOW MAKING THE QUEUE USNG THE 2 STACKS
-
-# def create_Queue(size):
-
-#     s1=Stack1(size) # for insertion
-
-#     s2=Stack2(size) # for output
-#     return s1,s2,"Queue creted"
+# # s2.insert(1)
+# # s2.insert(2)
+# # s2.insert(3)
+# # s2.insert(4)
+# # s2.insert(5)
 
 
-# def insert_queue(value):
+# # s2.traverse()
+
+# # s2.pop()
+
+# # s2.traverse()
+
+# # NOW MAKING THE QUEUE USNG THE 2 STACKS
+
+# # def create_Queue(size):
+
+# #     s1=Stack1(size) # for insertion
+
+# #     s2=Stack2(size) # for output
+# #     return s1,s2,"Queue creted"
+
+
+# # def insert_queue(value):
     
 
-# print(create_Queue(5))
+# # print(create_Queue(5))
 
 
-class Queue:
-    def __init__(self,size):
-        self.stack1=Stack1(size)
-        self.stack2=Stack2(size)
-        self.size=size
+# class Queue:
+#     def __init__(self,size):
+#         self.stack1=Stack1(size)
+#         self.stack2=Stack2(size)
+#         self.size=size
 
-    def len(self):
-        return self.size
+#     def len(self):
+#         return self.size
 
-    def push(self,value):
-        if self.stack1.is_full()==True or self.stack2.is_full()==True :
-            return"Queue is full"
-        else:
-            print("Done")
-            self.stack1.push(value)
-    def pop(self):
+#     def push(self,value):
+#         if self.stack1.is_full()==True or self.stack2.is_full()==True :
+#             return"Queue is full"
+#         else:
+#             print("Done")
+#             self.stack1.push(value)
+#     def pop(self):
 
-        if self.stack2.is_empty()==True:
-            if self.stack1.is_empty()==True:
-                return "Queue is Empty"
-            else:
-                for i in range(self.size):
-                    s1_popped_item=self.stack1.pop()
-                    self.stack2.push(s1_popped_item)
-                popped_item=self.stack2.pop()
-                return popped_item
-        else:
-            popped_item=self.stack2.pop()
-            return popped_item
+#         if self.stack2.is_empty()==True:
+#             if self.stack1.is_empty()==True:
+#                 return "Queue is Empty"
+#             else:
+#                 for i in range(self.size):
+#                     s1_popped_item=self.stack1.pop()
+#                     self.stack2.push(s1_popped_item)
+#                 popped_item=self.stack2.pop()
+#                 return popped_item
+#         else:
+#             popped_item=self.stack2.pop()
+            # return popped_item
     # def traverse(self):
     #     if self.stack2.is_empty()==True:
     #         return "Queue is Empty"
         
 
 
-q=Queue(5)
+# q=Queue(5)
 
-q.push(1)
-q.push(2)
-q.push(3)
-q.push(4)
-q.push(5)
+# q.push(1)
+# q.push(2)
+# q.push(3)
+# q.push(4)
+# q.push(5)
 
-print(q.pop())
-print(q.pop())
-print(q.pop())
+# print(q.pop())
+# print(q.pop())
+# print(q.pop())
 
-
-        
 
         
+
+## REcursion
+
+def factorial(n):
+    if n==0:
+       return 1
+    return n*factorial(n-1)
+print(factorial(0))
+
+def steps(n):
+    if n==0:
+        return
+    steps(n-1)
+    return print(f"This is a {n} step")
+    
+steps(50)
+
+
 
 
         
