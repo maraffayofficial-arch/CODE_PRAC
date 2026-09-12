@@ -1276,6 +1276,44 @@ print(func(123))
 
 
 
+
+# Buble sort  complexity O(n^2)
+
+a=[12,10,5,21,8,11,65]
+
+
+for j in range(len(a)-1):
+    for i in range(len(a)-1):
+    # while p!=len(a-1):
+        if a[i]>a[i+1]:
+            temp=a[i]
+            a[i]=a[i+1]
+            a[i+1]=temp
+
+print(a)
+
+
+# pivot=a[0]
+# p=1
+# q=len(a)-1
+# # while pivot==len(a)-1:
+# #     if a[p]>a[pivot]
+# while a[p]<=pivot and a[q]>=pivot:
+
+#       if a[p]
+      
+#       p+=1
+      q-=1
+
+
+
+
+
+
+
+
+
+
         
         
 
