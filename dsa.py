@@ -1070,163 +1070,163 @@
 
 
 
-class Stack1:
-    def __init__(self,size):
-        self.size=size
-        self.top=-1
-        self.stack=[None]*self.size
+# class Stack1:
+#     def __init__(self,size):
+#         self.size=size
+#         self.top=-1
+#         self.stack=[None]*self.size
 
-    def push(self,value):
-        if self.top==self.size-1:
-            return "Stack Overflow"
-        self.top=self.top+1
-        self.stack[self.top]=value
-    def len(self):
-        return self.top+1
+#     def push(self,value):
+#         if self.top==self.size-1:
+#             return "Stack Overflow"
+#         self.top=self.top+1
+#         self.stack[self.top]=value
+#     def len(self):
+#         return self.top+1
 
-    def pop(self):
-        if self.top==-1:
-            return "Empty stack 1"
-        poped_item=self.stack[self.top]
-        self.stack[self.top]=None
-        self.top=self.top-1
+#     def pop(self):
+#         if self.top==-1:
+#             return "Empty stack 1"
+#         poped_item=self.stack[self.top]
+#         self.stack[self.top]=None
+#         self.top=self.top-1
         
-        return poped_item
-        
-
-    def traverse(self):
-        curr=self.top
-        for i in range(curr,-1,-1): # as stack traverse from behind
-            print(self.stack[i])
+#         return poped_item
         
 
-    def is_empty(self):
-        if self.top==-1:
-            return True
-        return False
+#     def traverse(self):
+#         curr=self.top
+#         for i in range(curr,-1,-1): # as stack traverse from behind
+#             print(self.stack[i])
+        
 
-    def is_full(self):
-            if self.top==self.size-1:
-                return True
-            return False
+#     def is_empty(self):
+#         if self.top==-1:
+#             return True
+#         return False
 
-
-
-# s1=Stack1(3)
-
-# s1.push(1)
-# s1.push(2)
-# s1.push(3)
-# print(s1.len())
-# s1.traverse()
-# print(s1.pop())
-# s1.traverse()
+#     def is_full(self):
+#             if self.top==self.size-1:
+#                 return True
+#             return False
 
 
-class Stack2:
-    def __init__(self,size):
-        self.size=size
-        self.top=-1
-        self.stack=[None]*self.size
 
-    def push(self,value):
-        if self.top==self.size-1:
-            return "Stack Overflow"
-        self.top=self.top+1
-        self.stack[self.top]=value
+# # s1=Stack1(3)
 
-    def traverse(self):
-        curr=self.top
+# # s1.push(1)
+# # s1.push(2)
+# # s1.push(3)
+# # print(s1.len())
+# # s1.traverse()
+# # print(s1.pop())
+# # s1.traverse()
 
-        for i in range(curr,-1,-1): # as a stack should traverse from behind
-            print(self.stack[i])
+
+# class Stack2:
+#     def __init__(self,size):
+#         self.size=size
+#         self.top=-1
+#         self.stack=[None]*self.size
+
+#     def push(self,value):
+#         if self.top==self.size-1:
+#             return "Stack Overflow"
+#         self.top=self.top+1
+#         self.stack[self.top]=value
+
+#     def traverse(self):
+#         curr=self.top
+
+#         for i in range(curr,-1,-1): # as a stack should traverse from behind
+#             print(self.stack[i])
            
 
-    def pop(self):
-        if self.top==-1:
-            return "Stack is empty"
-        popped_item=self.stack[self.top]
-        self.top=self.top-1
-        return popped_item
+#     def pop(self):
+#         if self.top==-1:
+#             return "Stack is empty"
+#         popped_item=self.stack[self.top]
+#         self.top=self.top-1
+#         return popped_item
     
-    def len(self):
-            return self.top+1
+#     def len(self):
+#             return self.top+1
     
-    def is_empty(self):
-        if self.top==-1:
-            return True
-        return False
+#     def is_empty(self):
+#         if self.top==-1:
+#             return True
+#         return False
 
-    def is_full(self):
-        if self.top==self.size-1:
-            return True
-        return False
+#     def is_full(self):
+#         if self.top==self.size-1:
+#             return True
+#         return False
     
-# s2=Stack2(5)
+# # s2=Stack2(5)
 
-# s2.insert(1)
-# s2.insert(2)
-# s2.insert(3)
-# s2.insert(4)
-# s2.insert(5)
-
-
-# s2.traverse()
-
-# s2.pop()
-
-# s2.traverse()
-
-# NOW MAKING THE QUEUE USNG THE 2 STACKS
-
-# def create_Queue(size):
-
-#     s1=Stack1(size) # for insertion
-
-#     s2=Stack2(size) # for output
-#     return s1,s2,"Queue creted"
+# # s2.insert(1)
+# # s2.insert(2)
+# # s2.insert(3)
+# # s2.insert(4)
+# # s2.insert(5)
 
 
-# def insert_queue(value):
+# # s2.traverse()
+
+# # s2.pop()
+
+# # s2.traverse()
+
+# # NOW MAKING THE QUEUE USNG THE 2 STACKS
+
+# # def create_Queue(size):
+
+# #     s1=Stack1(size) # for insertion
+
+# #     s2=Stack2(size) # for output
+# #     return s1,s2,"Queue creted"
+
+
+# # def insert_queue(value):
     
 
-# print(create_Queue(5))
+# # print(create_Queue(5))
 
 
-class Queue:
-    def __init__(self,size):
-        self.stack1=Stack1(size)
-        self.stack2=Stack2(size)
-        self.size=size
+# class Queue:
+#     def __init__(self,size):
+#         self.stack1=Stack1(size)
+#         self.stack2=Stack2(size)
+#         self.size=size
 
-    def len(self):
-        return self.size
+#     def len(self):
+#         return self.size
 
-    def push(self,value):
-        if self.stack1.is_full()==True or self.stack2.is_full()==True :
-            return"Queue is full"
-        else:
-            # print("Done")
-            self.stack1.push(value)
-    def pop(self):
+#     def push(self,value):
+#         if self.stack1.is_full()==True or self.stack2.is_full()==True :
+#             return"Queue is full"
+#         else:
+#             # print("Done")
+#             self.stack1.push(value)
+#     def pop(self):
 
-        if self.stack2.is_empty()==True:
-            if self.stack1.is_empty()==True:
-                return "Queue is Empty"
-            else:
-                # for i in range(self.size):
-                #     s1_popped_item=self.stack1.pop()
-                #     self.stack2.push(s1_popped_item)
-                while not self.stack1.is_empty():
-                    self.stack2.push(self.stack1.pop())
-                popped_item=self.stack2.pop()
-                return popped_item
-        else:
-            popped_item=self.stack2.pop()
-            return popped_item
-    def traverse(self):
-        if self.stack2.is_empty()==True:
-            return "Queue is Empty"
+#         if self.stack2.is_empty()==True:
+#             if self.stack1.is_empty()==True:
+#                 return "Queue is Empty"
+#             else:
+#                 # for i in range(self.size):
+#                 #     s1_popped_item=self.stack1.pop()
+#                 #     self.stack2.push(s1_popped_item)
+#                 while not self.stack1.is_empty():
+#                     self.stack2.push(self.stack1.pop())
+#                 popped_item=self.stack2.pop()
+#                 return popped_item
+#         else:
+#             popped_item=self.stack2.pop()
+#             return popped_item
+#     def traverse(self):
+#         if self.stack2.is_empty()==True:
+#             return "Queue is Empty"
         
 
 
@@ -1261,18 +1261,18 @@ class Queue:
     
 # steps(50)
 
-def func(num):
-    if num==0:
-        return 0
-    else:
+# def func(num):
+#     if num==0:
+#         return 0
+#     else:
 
-        q.push(num%10)
-        res=func(num//10)
-        res=res*10+q.pop()
-        return res
+#         q.push(num%10)
+#         res=func(num//10)
+#         res=res*10+q.pop()
+#         return res
     
-q=Queue(100)
-print(func(123))
+# q=Queue(100)
+# print(func(123))
 
 
 
@@ -1282,40 +1282,41 @@ print(func(123))
 a=[12,10,5,21,8,11,65]
 
 
-for j in range(len(a)-1):
-    for i in range(len(a)-1):
-    # while p!=len(a-1):
-        if a[i]>a[i+1]:
-            temp=a[i]
-            a[i]=a[i+1]
-            a[i+1]=temp
+# for j in range(len(a)-1):
+#     for i in range(len(a)-1):
+#     # while p!=len(a-1):
+#         if a[i]>a[i+1]:
+#             temp=a[i]
+#             a[i]=a[i+1]
+#             a[i+1]=temp
 
-print(a)
+# print(a)
 
-
-# pivot=a[0]
-# p=1
-# q=len(a)-1
-# # while pivot==len(a)-1:
-# #     if a[p]>a[pivot]
-# while a[p]<=pivot and a[q]>=pivot:
-
-#       if a[p]
-      
-#       p+=1
-      q-=1
+# Hashing 
 
 
+# 12,10,13,21,8,11,65
+a=[12,10,13,21,8,11,65]
+b=[None]*len(a) # i have to give in none as  cant let the empty list empty
+
+def hashing_func():
+    for i in range(len(a)):
+        index=a[i]%len(a)
+        b[index]=a[i]
+    
 
 
+# m=a[hashing_func(4)]
 
+# bndex=4%len(a)
 
+hashing_func()
 
+# m=65%7
+print(b)
 
-
-
-        
-        
+# 5,3,6,0,1,4,2 
+# 21,8,65,10,11,12,13        
 
 
 
