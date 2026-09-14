@@ -1292,41 +1292,90 @@ a=[12,10,5,21,8,11,65]
 
 # print(a)
 
+
+
 # Hashing 
 
 
 # 12,10,13,21,8,11,65
-a=[12,10,13,21,8,11,65]
-b=[None]*len(a) # i have to give in none as  cant let the empty list empty
+# a=[12,10,13,21,8,11,65]
+# b=[None]*len(a) # i have to give in none as  cant let the empty list empty
 
-def hashing_func():
-    for i in range(len(a)):
-        index=a[i]%len(a)
-        b[index]=a[i]
+# def hashing_func():
+#     for i in range(len(a)):
+#         index=a[i]%len(a)
+#         b[index]=a[i]
     
 
 
-# m=a[hashing_func(4)]
+# # m=a[hashing_func(4)]
 
-# bndex=4%len(a)
+# # bndex=4%len(a)
 
-hashing_func()
+# hashing_func()
 
-# m=65%7
-print(b)
+# # m=65%7
+# print(b)
 
-# 5,3,6,0,1,4,2 
-# 21,8,65,10,11,12,13        
-
-
+# # 5,3,6,0,1,4,2 
+# # 21,8,65,10,11,12,13        
 
 
 
+# hashing gives collisin and to solve that we use linear and quadratic probic whch are as follor 
+
+# first linear probing 
+
+class Dict:
+    def __init__(self,size):
+        self.size=size
+        self.slot=[None]*self.size # one array to store the key of the dict
+        self.data=[None]*self.size  # one array to store the value of the key
+
+    def put(self,key,value):
+
+        hash_value=self.hash_function(key) # if the slot is empty then just put the value and key
+        if self.slot[hash_value]==None:
+            self.data[hash_value]=value
+            self.slot[hash_value]=key
+        else:  # if there are already items at the place then we have to cases at hand 1 is that the key there is same as ours so we will only have to change the value in the data array(meaning updation). Other is that there is something else value on the indexs of both the arrays so for that as we learned in the linear probing we will have to move forward and put key and value to the frequent empty index
+            if self.slot[hash_value]==key:
+                self.data[hash_value]=value
+            else:  # now we move forward in the array to perform linear probing.
+                new_hash=self.rehash(hash_value)
+                while self.slot[new_hash] != None and self.sort[new_hash]==key: # another case would be if we find the element we want to update in somewhere forward what then? if we just find the None index then there is a chance there would already be avalable a key in the forward so we will handle that problem here in the loop as well 
+                    new_hash=self.rehash(new_hash)
+
+                if self.slot[new_hash]==None:
+                    self.slot[new_hash]=key
+                    self.data[new_hash]=value
+                else:
+                    self.data[new_hash]=value
+
+
+    def rehash(self,old_hash):  # as to move forward in the array we have to increase the pointer to forward place
+        return (old_hash+1) % self.size
+
+
+
+        
+    def hash_function(self,key): # as we are to save info into the arrays like key value pairs so we would need a value for every string key which can be cacuated by the pythons hash() function which calculates every words hash value
+        hash_value=abs(hash(key)) # using abs() function to make the value positive
+        return hash_value % self.size
+        
 
 
 
 
 
 
+D1=Dict(3)
 
+print(D1.data)
+print(D1.slot)
 
+D1.put("python",21)
+D1.put("java",22)
+
+print(D1.data)
+print(D1.slot)
