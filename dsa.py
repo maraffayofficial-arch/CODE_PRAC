@@ -1343,7 +1343,7 @@ class Dict:
                 self.data[hash_value]=value
             else:  # now we move forward in the array to perform linear probing.
                 new_hash=self.rehash(hash_value)
-                while self.slot[new_hash] != None and self.sort[new_hash]==key: # another case would be if we find the element we want to update in somewhere forward what then? if we just find the None index then there is a chance there would already be avalable a key in the forward so we will handle that problem here in the loop as well 
+                while self.slot[new_hash] != None and self.slot[new_hash]==key: # another case would be if we find the element we want to update in somewhere forward what then? if we just find the None index then there is a chance there would already be avalable a key in the forward so we will handle that problem here in the loop as well 
                     new_hash=self.rehash(new_hash)
 
                 if self.slot[new_hash]==None:
@@ -1352,7 +1352,8 @@ class Dict:
                 else:
                     self.data[new_hash]=value
 
-
+    def __setitem__(self, key, value):
+        self.put(key,value)
     def rehash(self,old_hash):  # as to move forward in the array we have to increase the pointer to forward place
         return (old_hash+1) % self.size
 
@@ -1374,8 +1375,16 @@ D1=Dict(3)
 print(D1.data)
 print(D1.slot)
 
-D1.put("python",21)
-D1.put("java",22)
+# D1.put("python",21)
+# D1.put("java",22)
+# D1.put("php",23)
+# D1.put("python",1231)
+# D1.put("php",987)
+# D1.put("python",1231)
+
+D1["Python"]=123
+D1["java"]=23
+D1["php"]=121
 
 print(D1.data)
 print(D1.slot)
