@@ -1357,7 +1357,18 @@ class Dict:
     def rehash(self,old_hash):  # as to move forward in the array we have to increase the pointer to forward place
         return (old_hash+1) % self.size
 
+    def get_item(self,key):
+        start_pos=self.hash_function(key)
+        curr_pos=start_pos
 
+        while self.slot[curr_pos]!=None:
+            if self.slot[curr_pos]==key:
+                return self.data[curr_pos]
+            curr_pos=self.rehash(curr_pos)
+            if curr_pos==start_pos:
+                return "Not Found"
+        return "Not Found"
+            
 
         
     def hash_function(self,key): # as we are to save info into the arrays like key value pairs so we would need a value for every string key which can be cacuated by the pythons hash() function which calculates every words hash value
@@ -1388,3 +1399,5 @@ D1["php"]=121
 
 print(D1.data)
 print(D1.slot)
+
+print(D1.get_item("java"))
