@@ -1460,7 +1460,15 @@ class LL:
             # result=result+str(temp.key)+"-->"+str(temp.value)+end=""
             print(temp.key,"-->",temp.value," ",end="")
             temp=temp.next
-        # return result
+          # return result
+    def size(self):
+        temp=self.head
+        counter=0
+        while temp!=None:
+            counter+=1
+            temp=temp.next
+        return counter
+        
     def search(self,key):
         temp=self.head
         index=0
@@ -1493,32 +1501,50 @@ class Dict:
             L.append(LL())
         return L
     def hash_function(self,key):
-
         hash_value=abs(hash(key))
         return hash_value % self.capacity
         return hash_value
+    
     def len(self):
         return self.capacity
+    
     def put(self,key,value):
         hash_value=self.hash_function(key)
         # print("check 1")
         bucket_index=self.buckets[hash_value]
-        # print("hash value",hash_value)
         LL_index=self.get_node_index(hash_value,key)
-        # print("LL indx",LL_index)
         if LL_index==-1:
             # insert
             self.buckets[hash_value].add(key,value)
             self.size+=1
+            load_factor=self.size/self.capacity
+            print(load_factor)
+            if load_factor>=2:
+                self.rehash()
         else:
             node=self.buckets[hash_value].get_node_at_index(LL_index)
             node.value=value
         return
 
+    def rehash(self):
+        self.capacity=self.capacity*2
+        # print("rehash")
+        self.size=0
+        old_buckets=self.buckets
+        self.buckets=self.make_array(self.capacity)
+        # print("rehash 2")
 
+        for i in old_buckets:
+            for j in range(i.size()):
+                node=i.get_node_at_index(j)
+                key_item=node.key
+                value_item=node.value
+                self.put(key_item,value_item)
 
     def get_node_index(self,bucket_index,key):
         node_index=self.buckets[bucket_index].search(key)
+        # print("node index",node_index)
+        
         return node_index
 
         
@@ -1541,16 +1567,22 @@ D.put("java",13)
 D.put("php",14)
 D.put("dsa",15)
 D.put("oops",17)
+D.put("cs",23)
+D.put("jjk",24)
+D.put("sam",29)
+D.put("li",21)
+D.put("bash",25)
+# D.put("oom",32)
 
 # print(D.buckets)
-D.buckets[0].traverse()
-print("1")
-D.buckets[1].traverse()
-print("2")
-D.buckets[2].traverse()
-print("3")
-D.buckets[3].traverse()
-print("4")
-D.buckets[4].traverse()
+# D.buckets[0].traverse()
+# print("1")
+# D.buckets[1].traverse()
+# print("2")
+# D.buckets[2].traverse()
+# print("3")
+# D.buckets[3].traverse()
+# print("4")
+# D.buckets[4].traverse()
 # print(D.len())
 
