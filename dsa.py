@@ -1326,54 +1326,54 @@ a=[12,10,5,21,8,11,65]
 
 # first linear probing 
 
-class Dict:
-    def __init__(self,size):
-        self.size=size
-        self.slot=[None]*self.size # one array to store the key of the dict
-        self.data=[None]*self.size  # one array to store the value of the key
+# class Dict:
+#     def __init__(self,size):
+#         self.size=size
+#         self.slot=[None]*self.size # one array to store the key of the dict
+#         self.data=[None]*self.size  # one array to store the value of the key
 
-    def put(self,key,value):
+#     def put(self,key,value):
 
-        hash_value=self.hash_function(key) # if the slot is empty then just put the value and key
-        if self.slot[hash_value]==None:
-            self.data[hash_value]=value
-            self.slot[hash_value]=key
-        else:  # if there are already items at the place then we have to cases at hand 1 is that the key there is same as ours so we will only have to change the value in the data array(meaning updation). Other is that there is something else value on the indexs of both the arrays so for that as we learned in the linear probing we will have to move forward and put key and value to the frequent empty index
-            if self.slot[hash_value]==key:
-                self.data[hash_value]=value
-            else:  # now we move forward in the array to perform linear probing.
-                new_hash=self.rehash(hash_value)
-                while self.slot[new_hash] != None and self.slot[new_hash]==key: # another case would be if we find the element we want to update in somewhere forward what then? if we just find the None index then there is a chance there would already be avalable a key in the forward so we will handle that problem here in the loop as well 
-                    new_hash=self.rehash(new_hash)
+#         hash_value=self.hash_function(key) # if the slot is empty then just put the value and key
+#         if self.slot[hash_value]==None:
+#             self.data[hash_value]=value
+#             self.slot[hash_value]=key
+#         else:  # if there are already items at the place then we have to cases at hand 1 is that the key there is same as ours so we will only have to change the value in the data array(meaning updation). Other is that there is something else value on the indexs of both the arrays so for that as we learned in the linear probing we will have to move forward and put key and value to the frequent empty index
+#             if self.slot[hash_value]==key:
+#                 self.data[hash_value]=value
+#             else:  # now we move forward in the array to perform linear probing.
+#                 new_hash=self.rehash(hash_value)
+#                 while self.slot[new_hash] != None and self.slot[new_hash]==key: # another case would be if we find the element we want to update in somewhere forward what then? if we just find the None index then there is a chance there would already be avalable a key in the forward so we will handle that problem here in the loop as well 
+#                     new_hash=self.rehash(new_hash)
 
-                if self.slot[new_hash]==None:
-                    self.slot[new_hash]=key
-                    self.data[new_hash]=value
-                else:
-                    self.data[new_hash]=value
+#                 if self.slot[new_hash]==None:
+#                     self.slot[new_hash]=key
+#                     self.data[new_hash]=value
+#                 else:
+#                     self.data[new_hash]=value
 
-    def __setitem__(self, key, value):
-        self.put(key,value)
-    def rehash(self,old_hash):  # as to move forward in the array we have to increase the pointer to forward place
-        return (old_hash+1) % self.size
+#     def __setitem__(self, key, value):
+#         self.put(key,value)
+#     def rehash(self,old_hash):  # as to move forward in the array we have to increase the pointer to forward place
+#         return (old_hash+1) % self.size
 
-    def get_item(self,key):
-        start_pos=self.hash_function(key)
-        curr_pos=start_pos
+#     def get_item(self,key):
+#         start_pos=self.hash_function(key)
+#         curr_pos=start_pos
 
-        while self.slot[curr_pos]!=None:
-            if self.slot[curr_pos]==key:
-                return self.data[curr_pos]
-            curr_pos=self.rehash(curr_pos)
-            if curr_pos==start_pos:
-                return "Not Found"
-        return "Not Found"
+#         while self.slot[curr_pos]!=None:
+#             if self.slot[curr_pos]==key:
+#                 return self.data[curr_pos]
+#             curr_pos=self.rehash(curr_pos)
+#             if curr_pos==start_pos:
+#                 return "Not Found"
+#         return "Not Found"
             
 
         
-    def hash_function(self,key): # as we are to save info into the arrays like key value pairs so we would need a value for every string key which can be cacuated by the pythons hash() function which calculates every words hash value
-        hash_value=abs(hash(key)) # using abs() function to make the value positive
-        return hash_value % self.size
+#     def hash_function(self,key): # as we are to save info into the arrays like key value pairs so we would need a value for every string key which can be cacuated by the pythons hash() function which calculates every words hash value
+#         hash_value=abs(hash(key)) # using abs() function to make the value positive
+#         return hash_value % self.size
         
 
 
@@ -1381,23 +1381,176 @@ class Dict:
 
 
 
-D1=Dict(3)
+# D1=Dict(3)
 
-print(D1.data)
-print(D1.slot)
+# print(D1.data)
+# print(D1.slot)
 
-# D1.put("python",21)
-# D1.put("java",22)
-# D1.put("php",23)
-# D1.put("python",1231)
-# D1.put("php",987)
-# D1.put("python",1231)
+# # D1.put("python",21)
+# # D1.put("java",22)
+# # D1.put("php",23)
+# # D1.put("python",1231)
+# # D1.put("php",987)
+# # D1.put("python",1231)
 
-D1["Python"]=123
-D1["java"]=23
-D1["php"]=121
+# D1["Python"]=123
+# D1["java"]=23
+# D1["php"]=121
 
-print(D1.data)
-print(D1.slot)
+# print(D1.data)
+# print(D1.slot)
 
-print(D1.get_item("java"))
+# print(D1.get_item("java"))
+
+
+
+
+
+
+
+
+# HASHING USING THE COLLISION CHAINING TECHNIQUE
+
+class Node:
+    def __init__(self,key,value):
+        self.key=key
+        self.value=value
+        self.next=None
+        
+        
+class LL:
+    def __init__(self):
+        self.head=None
+        self.n=0
+    def add(self,key,value):
+        new_node=Node(key,value)
+        if self.head==None:
+            self.head=new_node
+            self.n+=1
+        else:
+            temp =self.head
+            while temp.next!=None:
+               temp=temp.next
+            temp.next=new_node
+            self.n+=1
+    def delete(self,node):
+        # if node.next==None:
+        #   
+        #   node=None
+        pass
+        
+
+
+    def remove(self,key):
+        if self.head==None:
+            return "LL empty"
+        else:
+            temp=self.head
+            while temp!=None:
+                if temp.key==key:
+                    self.delete(key)
+                    return
+                
+                temp=temp.next
+
+    def traverse(self):
+        temp=self.head
+        # result=""
+        while temp!=None:
+            # result=result+str(temp.key)+"-->"+str(temp.value)+end=""
+            print(temp.key,"-->",temp.value," ",end="")
+            temp=temp.next
+        # return result
+    def search(self,key):
+        temp=self.head
+        index=0
+        while temp!=None:
+            if temp.key==key:
+                return index
+            index+=1
+            temp=temp.next
+        return -1
+    def get_node_at_index(self,index):
+        counter=0
+        temp=self.head
+        while temp is not None:
+            if counter==index:
+                return temp
+            counter+=1
+            temp=temp.next
+
+
+
+class Dict:
+    def __init__(self,capacity):
+        self.size=0
+        self.capacity=capacity
+        self.buckets=self.make_array(self.capacity)
+
+    def make_array(self,capacity):
+        L=[]
+        for i in range(capacity):
+            L.append(LL())
+        return L
+    def hash_function(self,key):
+
+        hash_value=abs(hash(key))
+        return hash_value % self.capacity
+        return hash_value
+    def len(self):
+        return self.capacity
+    def put(self,key,value):
+        hash_value=self.hash_function(key)
+        # print("check 1")
+        bucket_index=self.buckets[hash_value]
+        # print("hash value",hash_value)
+        LL_index=self.get_node_index(hash_value,key)
+        # print("LL indx",LL_index)
+        if LL_index==-1:
+            # insert
+            self.buckets[hash_value].add(key,value)
+            self.size+=1
+        else:
+            node=self.buckets[hash_value].get_node_at_index(LL_index)
+            node.value=value
+        return
+
+
+
+    def get_node_index(self,bucket_index,key):
+        node_index=self.buckets[bucket_index].search(key)
+        return node_index
+
+        
+
+
+
+
+# ll=LL()
+
+# ll.add(1,2)
+# ll.add(3,4)
+# ll.add(5,6)
+# print(ll.search(3))
+# ll.traverse()
+    
+D=Dict(5)
+
+D.put("python",12)
+D.put("java",13)
+D.put("php",14)
+D.put("dsa",15)
+D.put("oops",17)
+
+# print(D.buckets)
+D.buckets[0].traverse()
+print("1")
+D.buckets[1].traverse()
+print("2")
+D.buckets[2].traverse()
+print("3")
+D.buckets[3].traverse()
+print("4")
+D.buckets[4].traverse()
+# print(D.len())
+
