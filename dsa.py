@@ -1560,19 +1560,19 @@ class Dict:
 # print(ll.search(3))
 # ll.traverse()
     
-D=Dict(5)
+# D=Dict(5)
 
-D.put("python",12)
-D.put("java",13)
-D.put("php",14)
-D.put("dsa",15)
-D.put("oops",17)
-D.put("cs",23)
-D.put("jjk",24)
-D.put("sam",29)
-D.put("li",21)
-D.put("bash",25)
-# D.put("oom",32)
+# D.put("python",12)
+# D.put("java",13)
+# D.put("php",14)
+# D.put("dsa",15)
+# D.put("oops",17)
+# D.put("cs",23)
+# D.put("jjk",24)
+# D.put("sam",29)
+# D.put("li",21)
+# D.put("bash",25)
+# # D.put("oom",32)
 
 # print(D.buckets)
 # D.buckets[0].traverse()
@@ -1586,3 +1586,17 @@ D.put("bash",25)
 # D.buckets[4].traverse()
 # print(D.len())
 
+
+# Searchin ALGOS STARTING 
+
+# LINEAR SEARCH 
+
+def linear_search(arr,item):
+    for i in range(len(arr)):
+        if arr[i]==item:
+            return i
+    return "Note found"
+
+
+arr=[23,4,12,42,66,76,43]
+print(linear_search(arr,42))
