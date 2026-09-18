@@ -1591,12 +1591,46 @@ class Dict:
 
 # LINEAR SEARCH 
 
-def linear_search(arr,item):
+# def linear_search(arr,item):
+#     for i in range(len(arr)):
+#         if arr[i]==item:
+#             return i
+#     return "Note found"
+
+
+# arr=[23,4,12,42,66,76,43]
+# print(linear_search(arr,42))
+
+# # TC OF LINEAR SEARCH IS O(n)
+
+
+
+
+
+
+
+# BINARY SEARCH IT REQUIRES AN ARRAY TO BE IN A SORTED FORM 
+
+def binary_search(value,arr):
+    init= 0#arr[0]
+    final=len(arr)-1 #arr[len(arr)-1]
+    if arr[init]==value:
+        return init
     for i in range(len(arr)):
-        if arr[i]==item:
-            return i
-    return "Note found"
+        temp= init + final % 2
+        if arr[temp]>value:
+           final=temp
+        elif arr[temp]==value:
+            return temp
+        else:
+            init=temp
+    
+           
+    
+
+arr=[11,22,33,44,55,66,77,88]
+print(binary_search(11,arr))
 
 
-arr=[23,4,12,42,66,76,43]
-print(linear_search(arr,42))
+
+
