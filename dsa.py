@@ -1610,27 +1610,48 @@ class Dict:
 
 
 # BINARY SEARCH IT REQUIRES AN ARRAY TO BE IN A SORTED FORM 
+# with looping
 
-def binary_search(value,arr):
-    init= 0#arr[0]
-    final=len(arr)-1 #arr[len(arr)-1]
-    if arr[init]==value:
-        return init
-    for i in range(len(arr)):
-        temp= init + final % 2
-        if arr[temp]>value:
-           final=temp
-        elif arr[temp]==value:
-            return temp
-        else:
-            init=temp
+
+# def binary_search(value,arr):
+#     init= 0
+#     final=len(arr)-1 
+#     if arr[init]==value:
+#         return init
+#     for i in range(len(arr)):
+#         temp= init + final % 2
+#         if arr[temp]>value:
+#            final=temp
+#         elif arr[temp]==value:
+#             return temp
+#         else:
+#             init=temp
     
            
     
 
+# arr=[11,22,33,44,55,66,77,88]
+# print(binary_search(11,arr))
+
+
+
+
+# Binary search using recursion 
+
+def binary_search(arr,low,high,value):
+    if low<=high:
+        center=(low + high)//2
+        if arr[center]==value:
+            return center
+        elif arr[center]>value:
+            return binary_search(arr,low,center-1,value)    
+        else:
+            return binary_search(arr,center+1,high,value)
+    else:
+        return -1
+
+
+
 arr=[11,22,33,44,55,66,77,88]
-print(binary_search(11,arr))
-
-
-
-
+print(binary_search(arr,0,len(arr)-1,55))
+# binary_search(arr,0,len(arr)-1,66)
